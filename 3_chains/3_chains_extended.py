@@ -8,15 +8,13 @@ from langchain_openai import ChatOpenAI
 load_dotenv()
 
 # Create a ChatOpenAI model
-model = ChatOpenAI(model="gpt-4o")
+model = ChatOpenAI(model="gpt-4o-mini")
 
 # Define prompt templates
-prompt_template = ChatPromptTemplate.from_messages(
-    [
-        ("system", "You are a comedian who tells jokes about {topic}."),
-        ("human", "Tell me {joke_count} jokes."),
-    ]
-)
+prompt_template = ChatPromptTemplate.from_messages([
+    ("system", "You are a comedian who tells jokes about {topic}."),
+    ("human", "Tell me {joke_count} jokes."),
+])
 
 # Define additional processing steps using RunnableLambda
 uppercase_output = RunnableLambda(lambda x: x.upper())

@@ -7,15 +7,13 @@ from langchain_openai import ChatOpenAI
 load_dotenv()
 
 # Create a ChatOpenAI model
-model = ChatOpenAI(model="gpt-4")
+model = ChatOpenAI(model="gpt-4o-mini")
 
 # Define prompt templates
-prompt_template = ChatPromptTemplate.from_messages(
-    [
-        ("system", "You are a comedian who tells jokes about {topic}."),
-        ("human", "Tell me {joke_count} jokes."),
-    ]
-)
+prompt_template = ChatPromptTemplate.from_messages([
+    ("system", "You are a comedian who tells jokes about {topic}."),
+    ("human", "Tell me {joke_count} jokes."),
+])
 
 # Create individual runnables (steps in the chain)
 format_prompt = RunnableLambda(lambda x: prompt_template.format_prompt(**x))
